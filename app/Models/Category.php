@@ -10,4 +10,8 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes;
     // protected $fillable=['category_name','slug'];
+    function subcategory()
+    {
+        return $this->hasMany(SubCategory::class,'category_id');
+    }
 }

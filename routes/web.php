@@ -20,10 +20,15 @@ use App\Http\Controllers\SizeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/', function () {
 
+//   return view('frontend.main', [
+//       "go" => "go",
+//   ]);
+// });
 Route::get('/dashboard', function () {
    return view('dashboard');
  })->middleware(['auth'])->name('dashboard');
@@ -31,6 +36,9 @@ Route::get('/dashboard', function () {
  require __DIR__.'/auth.php';
 Route::get('contact',[FrontendController::class,'contact']);
 Route::get('contact','FrontendController@contact');
+Route::get('/',[FrontendController::class,'frontend'])->name('frontend');
+Route::get('/productDetails/{slug}',[FrontendController::class,'productDetails'])->name('productDetails');
+Route::get('/get/color/size/{c_id}/{p_id}',[FrontendController::class,'GetColorSize'])->name('GetColorSize');
 Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
 Route::get('categories',[CategoryController::class,'categories'])->name('categories');
 
@@ -47,7 +55,19 @@ Route::get('add-subcategory',[SubCategoryController::class,'addcategory'])->name
 Route::post('post-subcategory',[SubCategoryController::class,'postsubcategory'])->name('postsubcategory');
 Route::get('subcategories',[SubCategoryController::class,'subcategories'])->name('subcategories');
 Route::post('all-subcategory-delete',[SubCategoryController::class,'allsubcategorydelete'])->name('allsubcategorydelete');
-Route::get('add-product',[ProductController::class,'addproduct'])->name('addproduct');
+Route::get('delete-subcategory/{id}',[SubCategoryController::class,'deletesubcategory'])->name('deletesubcategory');
+Route::get('trashed-subcategory',[SubCategoryController::class,'trashsubcategory'])->name('trashsubcategory');
+Route::get('restore-subcategory/{bilai}',[SubCategoryController::class,'restoresubcategory'])->name('restoresubcategory');
+Route::get('permanentdelete-subcategory/{bilai}',[SubCategoryController::class,'permanentdeletesubcategory'])->name('permanentdeletesubcategory');
+
+
+
+
+
+
+
+
+Route::get('add-product',[ProductController::class,'addproduct'])->name('addproduct')->middleware(['auth']);
 Route::post('post-product',[ProductController::class,'postproduct'])->name('postproduct');
 Route::get('products',[ProductController::class,'products'])->name('products');
 Route::post('update-product',[ProductController::class,'updateproduct'])->name('updateproduct');

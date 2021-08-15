@@ -9,4 +9,7 @@ class Size extends Model
 {public $table = 'sizes';
     use HasFactory;
     use SoftDeletes;
+    function attribute(){
+        return $this->hasMany(Attributes::class,'size_id');
+    }
 }

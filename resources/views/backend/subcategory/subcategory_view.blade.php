@@ -43,7 +43,7 @@ display:block
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="{{ url('all-subcategory-delete') }}" method="post">
+                <form action="{{url('all-subcategory-delete')}}" method="post">
                   @csrf
                 <table class="table table-bordered">
                   <thead>
@@ -68,11 +68,11 @@ display:block
                       </td>
                       <td>{{$cat->subcategory_name}}</td>
                       <td>{{$cat->slug}}</td>
-                      <td>{{$cat->category->category_name}}</td>
+                      <td>{{$cat->category['category_name']}}</td>
                       <td>{{$cat->created_at->format('d-M-Y h:i:s a')}}({{$cat->created_at->diffForHumans()}})</td>
                       <td>
                       <a class="btn btn-info"href="{{ url('edit-category') }}/{{ $cat->id }}">Edit</a>
-                      <a class="btn btn-danger" href="{{ url('delete-category') }}/{{ $cat->id }}">Delete</a>
+                      <a class="btn btn-danger" href="{{route('deletesubcategory',$cat->id)}}">Delete</a>
                       </td>
                       
                     </tr>
@@ -127,6 +127,26 @@ display:block
 <script>
   @if (session('success'))
   Command: toastr["success"]("{{ session('success') }}")
+    toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": true,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    @endif
+    @if (session('error'))
+  Command: toastr["error"]("{{ session('error') }}")
     toastr.options = {
       "closeButton": true,
       "debug": false,

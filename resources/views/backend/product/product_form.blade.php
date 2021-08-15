@@ -38,7 +38,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="{{url('post-product')}}" enctype="multipart/form-data">
+              <form method="post"name="myform" action="{{url('post-product')}}" enctype="multipart/form-data" onsubmit="return formsubmit()">
               @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -181,6 +181,14 @@
 @endsection
 @section("footer_js")
 <script>
+  function formsubmit() {
+      var img=document.forms['myform']['image_name[]'].value;
+      if(img=="")
+      {
+         alert('image_required');
+         return false;
+      }
+   }
   @if (session('success'))
   Command: toastr["success"]("{{ session('success') }}")
     toastr.options = {

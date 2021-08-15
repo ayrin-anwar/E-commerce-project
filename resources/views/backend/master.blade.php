@@ -209,6 +209,18 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item menu-open">
+                <a href=""onclick="event.preventDefault();document.getElementById('form-submit').submit();" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  
+                    Logout
+                   
+                </a>
+                
+              </li>  
+              <form id="form-submit"  action="{{route('logout')}}"method="post">
+                @csrf
+              </form>   
           <li class="nav-item menu-open">
             <a href="{{url('dashboard')}}" class="nav-link @yield('dashboardactive')">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -311,7 +323,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('trashed-category') }}" class="nav-link">
+                <a href="{{ url('trashed-subcategory') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Trashed</p>
                 </a>

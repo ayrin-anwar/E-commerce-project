@@ -9,12 +9,12 @@ class SubCategory extends Model
 {public $table = 'subcategories';
     use HasFactory;
     use SoftDeletes;
-    public function Category(){
+    public function category(){
         
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id', 'id');
     }
     public function product(){
         
-        return $this->hasOne(Category::class);
+        return $this->hasMany(Product::class,'subcategory_id');
     }
 }

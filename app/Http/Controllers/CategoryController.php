@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
@@ -35,8 +36,17 @@ class CategoryController extends Controller
     }
     function deletecategory($data)
     {
-        $cat=Category::findorFail($data)->delete();
-        return back()->with('success','Category deleted successfully');
+       
+       $cat=Category::findorFail($data);
+        if($cat->subcategory->count()<1)
+        {
+            $cat=Category::findorFail($data)->delete();
+            return back()->with('success',"Category deleted successfully");
+        }
+        else{
+            return redirect('categories')->with('error',"Categories can't be deleted");
+        }
+        
     }
     function editcategory($data)
     {

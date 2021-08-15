@@ -61,17 +61,17 @@
                          {{$products->firstItem() +$key}}
                       </td>
                       <td>{{$product->title}}</td>
-                      <td>{{$product->category_id}}</td>
-                      <td>{{$product->subcategory_id}}</td>
+                      <td>{{$product->category->category_name}}</td>
+                      <td>{{$product->subcategory->subcategory_name}}</td>
                       <td>
                        
                         @php
                            $data=$product->attribute->unique('color_id');
                         @endphp
                         <ul>
-                        @foreach($data as $attribute)
-                        <li>{{ $attribute->color->color_name }}</li>
-                        @endforeach
+                          @foreach($data as $attribute)
+                             <li>{{ $attribute->color['color_name'] }}</li>
+                          @endforeach
                       </ul>
                       </td>
                       <td><img src="{{asset('thumb/'.$product->thumbnail)}}"></td>

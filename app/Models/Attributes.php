@@ -17,6 +17,9 @@ class Attributes extends Model
     {
         return $this->belongsTo(Color::class,'color_id');
     }
+   function size(){
+       return $this->belongsTo(Size::class,'size_id');
+   }
 
 
 }

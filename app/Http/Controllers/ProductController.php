@@ -111,12 +111,17 @@ class ProductController extends Controller
     {    $cats=Category::all();
         $subcats=SubCategory::all();
         $product=Product::where('slug',$slug)->first();
-        return view('backend.product.product_edit', compact('product', 'cats', 'subcats'));
+        $attr=Attributes::all();
+       $colors=Color::all();
+       $sizes=Size::all();
+        return view('backend.product.product_edit', compact('product', 'cats', 'subcats','colors','sizes','attr'));
     }
    
     function updateproduct(Request $request)
     {
     $product = Product::findorFail($request->product_id);
+    //return Product::where('slug','!=',$product->slug)->get();
+    //return $product->slug;
         $product->title=$request->title;
         
         $slug = str::slug($request->title);
@@ -138,7 +143,32 @@ class ProductController extends Controller
             $product->thumbnail=$ext;
         }
         $product->save();
-       
+        foreach($request->attribute_id as $key=>$attribute_id)
+        { 
+           if($attribute_id!='')
+           {
+             $attribute=Attributes::findorFail($attribute_id);
+             $attribute->product_id=$request->product_id;
+             $attribute->color_id=$request->color_id[$key];
+             $attribute->size_id=$request->size_id[$key];
+            
+             $attribute->quantity=$request->quantity[$key];
+             $attribute->price=$request->price[$key];
+             $attribute->sale_price=$request->sale_price[$key];
+             $attribute->save();
+           }
+           else{
+            $attrs=new Attributes;
+            $attrs->product_id=$request->product_id;
+            $attrs->color_id=$request->color_id[$key];
+            $attrs->size_id=$request->size_id[$key];
+            
+            $attrs->quantity=$request->quantity[$key];
+            $attrs->price=$request->price[$key];
+            $attrs->sale_price=$request->sale_price[$key];
+            $attrs->save();
+           }
+         }
         return back()->with('success',"Product updated successfully");
       
     }
