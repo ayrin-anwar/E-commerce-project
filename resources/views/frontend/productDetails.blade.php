@@ -1,276 +1,516 @@
 @extends('frontend.master')
 @section('content')
-<div class="breadcumb-area bg-img-4 ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="breadcumb-wrap text-center">
-                    <h2>Shop Page</h2>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><span>Shop</span></li>
-                    </ul>
-                </div>
+
+<div class="offcanvas-overlay"></div>
+
+<!-- OffCanvas Wishlist Start -->
+<div id="offcanvas-wishlist" class="offcanvas offcanvas-wishlist">
+    <div class="inner">
+        <div class="head">
+            <span class="title">Wishlist</span>
+            <button class="offcanvas-close">×</button>
+        </div>
+        <div class="body customScroll">
+            <ul class="minicart-product-list">
+                <li>
+                    <a href="single-product.html" class="image"><img src="assets/images/product-image/1.jpg"
+                            alt="Cart product Image"></a>
+                    <div class="content">
+                        <a href="single-product.html" class="title">Women's Elizabeth Coat</a>
+                        <span class="quantity-price">1 x <span class="amount">$21.86</span></span>
+                        <a href="#" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="single-product.html" class="image"><img src="assets/images/product-image/2.jpg"
+                            alt="Cart product Image"></a>
+                    <div class="content">
+                        <a href="single-product.html" class="title">Long sleeve knee length</a>
+                        <span class="quantity-price">1 x <span class="amount">$13.28</span></span>
+                        <a href="#" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="single-product.html" class="image"><img src="assets/images/product-image/3.jpg"
+                            alt="Cart product Image"></a>
+                    <div class="content">
+                        <a href="single-product.html" class="title">Cool Man Wearing Leather</a>
+                        <span class="quantity-price">1 x <span class="amount">$17.34</span></span>
+                        <a href="#" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="foot">
+            <div class="buttons">
+                <a href="wishlist.html" class="btn btn-dark btn-hover-primary mt-30px">view wishlist</a>
             </div>
         </div>
     </div>
 </div>
-<div class="single-product-area ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="product-single-img">
-                    <div class="product-active owl-carousel">
-                        @foreach($galleries as $image)
-                        
-                        <div class="item">
-                            <img src="{{ asset('gallery/'.$image->image_name) }}" alt="">
-                        </div>
-                        @endforeach
-                        
+<!-- OffCanvas Wishlist End -->
+<!-- OffCanvas Cart Start -->
+<div id="offcanvas-cart" class="offcanvas offcanvas-cart">
+    <div class="inner">
+        <div class="head">
+            <span class="title">Cart</span>
+            <button class="offcanvas-close">×</button>
+        </div>
+        <div class="body customScroll">
+            <ul class="minicart-product-list">
+                <li>
+                    <a href="single-product.html" class="image"><img src="assets/images/product-image/1.jpg"
+                            alt="Cart product Image"></a>
+                    <div class="content">
+                        <a href="single-product.html" class="title">Women's Elizabeth Coat</a>
+                        <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
+                        <a href="#" class="remove">×</a>
                     </div>
-                    <div class="product-thumbnil-active  owl-carousel">
-                        @foreach($galleries as $image)
-                        <div class="item">
-                            <img src="{{ asset('gallery/'.$image->image_name) }}" alt="">
+                </li>
+                <li>
+                    <a href="single-product.html" class="image"><img src="assets/images/product-image/2.jpg"
+                            alt="Cart product Image"></a>
+                    <div class="content">
+                        <a href="single-product.html" class="title">Long sleeve knee length</a>
+                        <span class="quantity-price">1 x <span class="amount">$43.28</span></span>
+                        <a href="#" class="remove">×</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="single-product.html" class="image"><img src="assets/images/product-image/3.jpg"
+                            alt="Cart product Image"></a>
+                    <div class="content">
+                        <a href="single-product.html" class="title">Cool Man Wearing Leather</a>
+                        <span class="quantity-price">1 x <span class="amount">$37.34</span></span>
+                        <a href="#" class="remove">×</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="foot">
+            <div class="buttons mt-30px">
+                <a href="cart.html" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
+                <a href="checkout.html" class="btn btn-outline-dark current-btn">checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- OffCanvas Cart End -->
+
+<!-- OffCanvas Menu Start -->
+<div id="offcanvas-mobile-menu" class="offcanvas offcanvas-mobile-menu">
+    <button class="offcanvas-close"></button>
+
+    <div class="inner customScroll">
+
+        <div class="offcanvas-menu mb-4">
+            <ul>
+                <li><a href="#"><span class="menu-text">Home</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="index.html"><span class="menu-text">Home 1</span></a></li>
+                        <li><a href="index-2.html"><span class="menu-text">Home 2</span></a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="menu-text">Shop</span></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><span class="menu-text">Shop Page</span></a>
+                            <ul class="sub-menu">
+                                <li class="title"><a href="#">Shop Page</a></li>
+                                <li><a href="shop-3-column.html">Shop 3 Column</a></li>
+                                <li><a href="shop-4-column.html">Shop 4 Column</a></li>
+                                <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
+                                <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="menu-text">product Details Page</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="single-product.html">Product Single</a></li>
+                                <li><a href="single-product-variable.html">Product Variable</a></li>
+                                <li><a href="single-product-affiliate.html">Product Affiliate</a></li>
+                                <li><a href="single-product-group.html">Product Group</a></li>
+                                <li><a href="single-product-tabstyle-2.html">Product Tab 2</a></li>
+                                <li><a href="single-product-tabstyle-3.html">Product Tab 3</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="menu-text">Single Product Page</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="single-product-slider.html">Product Slider</a></li>
+                                <li><a href="single-product-gallery-left.html">Product Gallery Left</a>
+                                </li>
+                                <li><a href="single-product-gallery-right.html">Product Gallery Right</a>
+                                </li>
+                                <li><a href="single-product-sticky-left.html">Product Sticky Left</a></li>
+                                <li><a href="single-product-sticky-right.html">Product Sticky Right</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="menu-text">Other Shop Pages</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="cart.html">Cart Page</a></li>
+                                <li><a href="checkout.html">Checkout Page</a></li>
+                                <li><a href="compare.html">Compare Page</a></li>
+                                <li><a href="wishlist.html">Wishlist Page</a></li>
+                                <li><a href="my-account.html">Account Page</a></li>
+                                <li><a href="login.html">Login & Register Page</a></li>
+                                <li><a href="empty-cart.html">Empty Cart Page</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="menu-text">Pages</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="404.html">404 Page</a></li>
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="faq.html">Faq Page</a></li>
+                                <li><a href="coming-soon.html">Coming Soon Page</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="menu-text">Blog</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="blog-grid.html">Blog Grid Page</a></li>
+                        <li><a href="blog-grid-left-sidebar.html">Grid Left Sidebar</a></li>
+                        <li><a href="blog-grid-right-sidebar.html">Grid Right Sidebar</a></li>
+                        <li><a href="blog-single.html">Blog Single Page</a></li>
+                        <li><a href="blog-single-left-sidebar.html">Single Left Sidebar</a></li>
+                        <li><a href="blog-single-right-sidebar.html">Single Right Sidbar</a>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <!-- OffCanvas Menu End -->
+        <div class="offcanvas-social mt-auto">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-google"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- OffCanvas Menu End -->
+
+
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="breadcrumb-title">Products</h2>
+                <!-- breadcrumb-list start -->
+                <ul class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Products</li>
+                </ul>
+                <!-- breadcrumb-list end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- breadcrumb-area end -->
+
+<!-- Product Details Area Start -->
+<div class="product-details-area pt-100px pb-100px">
+    <div class="container">
+        <form action="{{route('CartPost')}}" method="post" >
+            @csrf
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                <!-- Swiper -->
+                <div class="swiper-container zoom-top">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/1.jpg"
+                                alt="">
                         </div>
-                        @endforeach
-                       
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/2.jpg"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/3.jpg"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide zoom-image-hover">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/zoom-image/4.jpg"
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-container zoom-thumbs mt-3 mb-3">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/small-image/1.jpg"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/small-image/2.jpg"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/small-image/3.jpg"
+                                alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="img-responsive m-auto" src="assets/images/product-image/small-image/4.jpg"
+                                alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="product-single-content">
-                    <h3>{{ $products->title }}</h3>
-                    <div class="rating-wrap fix">
-                        <span class="pull-left">{{ '$'.$products->attribute->min('sale_price')}}</span>
-                        <ul class="rating pull-right">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li>(05 Customar Review)</li>
+            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-details-content quickview-content">
+                    <h2>{{ $products->title }}</h2>
+                    <div class="pricing-meta">
+                        <ul>
+                            <li class="old-price not-cut">{{ '$'.$products->attribute->min('sale_price')}}</li>
                         </ul>
                     </div>
-                    <p>{{ $products->summary }}</p>
-                    <ul class="input-style">
-                        <li class="quantity cart-plus-minus">
-                            <input type="text" value="1" />
-                        </li>
-                        <li><a href="cart.html">Add to Cart</a></li>
-                    </ul>
-                    <ul class="cetagory">
-                        <li>Categories:</li>
-                        <li><a href="#">{{$products->category->category_name }}</a></li>
-                    </ul>
-                    <ul class="Color">
-                        <li>Color:</li>
-                        @foreach($colors as $color)
-                        <input type="radio" id="cid{{ $color[0]->id }}"class="color_id"name="color_id"data-product="{{ $products->id }}" value="{{ $color[0]->color_id }}">
-                        <label for="cid{{ $color[0]->id }}">{{ $color[0]->color->color_name }}</label>
-                       
-                        @endforeach
-                        
-                    </ul>
-                    <ul class="sizeadd">
-                        <li>Size:</li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                    <ul class="availability">
-                        <li>Quantity:</li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                    <ul class="socil-icon">
-                        <li>Share :</li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
+                    <div class="pro-details-rating-wrap">
+                        <div class="rating-product">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <span class="read-review"><a class="reviews" href="#">( 5 Customer Review )</a></span>
+                    </div>
+                    <p class="mt-30px mb-0">{{ $products->summary }}</p>
+                    <div class="pro-details-quality">
+                        <div class="cart-plus-minus">
+                            <input id="quantityofProduct" class="cart-plus-minus-box" type="text" name="quantity" value="1" />
+                        </div>
+                        <div class="pro-details-cart">
+                            <button class="add-cart"  type="submit"> Add To
+                                Cart</button>
+                        </div>
+                        <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>
+                        </div>
+                        <div class="pro-details-compare-wishlist pro-details-compare">
+                            <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="pro-details-sku-info pro-details-same-style  d-flex">
+                        <span>Color: </span>
+                        <ul class="d-flex">
+                            <input type="hidden" name="product_id" value={{ $products->id }}>
+                            @foreach($colors as $color)
+                            
+                           
+                           
+                            
+                            <li>
+                                <input type="radio" id="cid{{ $color[0]->id }}" class="color_id" name="color_id"data-product="{{ $products->id }}" value="{{ $color[0]->color_id }}"> <label for="cid{{ $color[0]->id }}">{{ $color[0]->color->color_name }}</label>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="pro-details-categories-info pro-details-same-style d-flex">
+                        <span>Categories: </span>
+                        <ul class="d-flex">
+                            
+                            <li>
+                                <a href="#">{{$products->category->category_name }}</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="pro-details-categories-info pro-details-same-style d-flex">
+                        <span>Size: </span>
+                        <ul class="d-flex">
+                            
+                            <li class="sizeadd">
+                               
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="pro-details-categories-info pro-details-same-style d-flex">
+                        <span>Quantity: </span>
+                        <ul class="d-flex">
+                            
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="pro-details-social-info pro-details-same-style d-flex">
+                        <span>Share: </span>
+                        <ul class="d-flex">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-google"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-60">
-            <div class="col-12">
-                <div class="single-product-menu">
-                    <ul class="nav">
-                        <li><a class="active" data-toggle="tab" href="#description">Description</a> </li>
-                        <li><a data-toggle="tab" href="#tag">Faq</a></li>
-                        <li><a data-toggle="tab" href="#review">Review</a></li>
-                    </ul>
-                </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- product details description area start -->
+<div class="description-review-area pb-100px" data-aos="fade-up" data-aos-delay="200">
+    <div class="container">
+        <div class="description-review-wrapper">
+            <div class="description-review-topbar nav">
+                <a data-bs-toggle="tab" href="#des-details2">Information</a>
+                <a class="active" data-bs-toggle="tab" href="#des-details1">Description</a>
+                <a data-bs-toggle="tab" href="#des-details3">Reviews (02)</a>
             </div>
-            <div class="col-12">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="description">
-                        <div class="description-wrap">
-                            <p>{{$products->description  }}</p>
-                            <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. </p>
-                        </div>
+            <div class="tab-content description-review-bottom">
+                <div id="des-details2" class="tab-pane">
+                    <div class="product-anotherinfo-wrapper text-start">
+                        <ul>
+                            <li><span>Weight</span> 400 g</li>
+                            <li><span>Dimensions</span>10 x 10 x 15 cm</li>
+                            <li><span>Materials</span> 60% cotton, 40% polyester</li>
+                            <li><span>Other Info</span> American heirloom jean shorts pug seitan letterpress</li>
+                        </ul>
                     </div>
-                    <div class="tab-pane" id="tag">
-                        <div class="faq-wrap" id="accordion">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h5><button data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">General Inquiries ?</button> </h5>
-                                </div>
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <h5><button class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">How To Use ?</button></h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingThree">
-                                    <h5><button class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Shipping & Delivery ?</button></h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingfour">
-                                    <h5><button class="collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">Additional Information ?</button></h5>
-                                </div>
-                                <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingfive">
-                                    <h5><button class="collapsed" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">Return Policy ?</button></h5>
-                                </div>
-                                <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div id="des-details1" class="tab-pane active">
+                    <div class="product-description-wrapper">
+                        <p>{{ $products->description }}</p>
                     </div>
-                    <div class="tab-pane" id="review">
-                        <div class="review-wrap">
-                            <ul>
-                                <li class="review-items">
+                </div>
+                <div id="des-details3" class="tab-pane">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="review-wrapper">
+                                <div class="single-review">
                                     <div class="review-img">
-                                        <img src="assets/images/comment/1.png" alt="">
+                                        <img src="assets/images/review-image/1.png" alt="" />
                                     </div>
                                     <div class="review-content">
-                                        <h3><a href="#">GERALD BARNES</a></h3>
-                                        <span>27 Jun, 2019 at 2:30pm</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
-                                        <ul class="rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
+                                        <div class="review-top-wrap">
+                                            <div class="review-left">
+                                                <div class="review-name">
+                                                    <h4>White Lewis</h4>
+                                                </div>
+                                                <div class="rating-product">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="review-left">
+                                                <a href="#">Reply</a>
+                                            </div>
+                                        </div>
+                                        <div class="review-bottom">
+                                            <p>
+                                                Vestibulum ante ipsum primis aucibus orci luctustrices posuere
+                                                cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper
+                                                euismod vehicula. Phasellus quam nisi, congue id nulla.
+                                            </p>
+                                        </div>
                                     </div>
-                                </li>
-                                <li class="review-items">
+                                </div>
+                                <div class="single-review child-review">
                                     <div class="review-img">
-                                        <img src="assets/images/comment/2.png" alt="">
+                                        <img src="assets/images/review-image/2.png" alt="" />
                                     </div>
                                     <div class="review-content">
-                                        <h3><a href="#">Olive Oil</a></h3>
-                                        <span>15 may, 2019 at 2:30pm</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
-                                        <ul class="rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-half-o"></i></li>
-                                        </ul>
+                                        <div class="review-top-wrap">
+                                            <div class="review-left">
+                                                <div class="review-name">
+                                                    <h4>White Lewis</h4>
+                                                </div>
+                                                <div class="rating-product">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="review-left">
+                                                <a href="#">Reply</a>
+                                            </div>
+                                        </div>
+                                        <div class="review-bottom">
+                                            <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere
+                                                cubilia Curae Sus pen disse viverra ed viverra. Mauris ullarper
+                                                euismod vehicula.</p>
+                                        </div>
                                     </div>
-                                </li>
-                                <li class="review-items">
-                                    <div class="review-img">
-                                        <img src="assets/images/comment/3.png" alt="">
-                                    </div>
-                                    <div class="review-content">
-                                        <h3><a href="#">Nature Honey</a></h3>
-                                        <span>14 janu, 2019 at 2:30pm</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
-                                        <ul class="rating">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="add-review">
-                            <h4>Add A Review</h4>
-                            <div class="ratting-wrap">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>task</th>
-                                            <th>1 Star</th>
-                                            <th>2 Star</th>
-                                            <th>3 Star</th>
-                                            <th>4 Star</th>
-                                            <th>5 Star</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>How Many Stars?</td>
-                                            <td>
-                                                <input type="radio" name="a" />
-                                            </td>
-                                            <td>
-                                                <input type="radio" name="a" />
-                                            </td>
-                                            <td>
-                                                <input type="radio" name="a" />
-                                            </td>
-                                            <td>
-                                                <input type="radio" name="a" />
-                                            </td>
-                                            <td>
-                                                <input type="radio" name="a" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <h4>Name:</h4>
-                                    <input type="text" placeholder="Your name here..." />
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <h4>Email:</h4>
-                                    <input type="email" placeholder="Your Email here..." />
-                                </div>
-                                <div class="col-12">
-                                    <h4>Your Review:</h4>
-                                    <textarea name="massage" id="massage" cols="30" rows="10" placeholder="Your review here..."></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn-style">Submit</button>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="ratting-form-wrapper pl-50">
+                                <h3>Add a Review</h3>
+                                <div class="ratting-form">
+                                    <form action="#">
+                                        <div class="star-box">
+                                            <span>Your rating:</span>
+                                            <div class="rating-product">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="rating-form-style">
+                                                    <input placeholder="Name" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="rating-form-style">
+                                                    <input placeholder="Email" type="email" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="rating-form-style form-submit">
+                                                    <textarea name="Your Review" placeholder="Message"></textarea>
+                                                    <button class="btn btn-primary btn-hover-color-primary "
+                                                        type="submit" value="Submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -280,19 +520,87 @@
         </div>
     </div>
 </div>
+<!-- product details description area end -->
+
+<!-- Related product Area Start -->
+<div class="related-product-area pb-100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title text-center mb-30px0px line-height-1">
+                    <h2 class="title m-0">Related Products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="new-product-slider swiper-container slider-nav-style-1 small-nav">
+            <div class="new-product-wrapper swiper-wrapper">
+                <div class="new-product-item swiper-slide">
+                    <!-- Single Prodect -->
+                    <div class="product">
+                        <div class="thumb">
+                            <a href="single-product.html" class="image">
+                                <img src="assets/images/product-image/8.jpg" alt="Product" />
+                                <img class="hover-image" src="assets/images/product-image/6.jpg"
+                                    alt="Product" />
+                            </a>
+                            <span class="badges">
+                                <span class="new">New</span>
+                            </span>
+                            <div class="actions">
+                                <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
+                                        class="pe-7s-like"></i></a>
+                                <a href="#" class="action quickview" data-link-action="quickview"
+                                    title="Quick view" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"><i class="pe-7s-search"></i></a>
+                                <a href="compare.html" class="action compare" title="Compare"><i
+                                        class="pe-7s-refresh-2"></i></a>
+                            </div>
+                            <button title="Add To Cart" class=" add-to-cart">Add
+                                To Cart</button>
+                        </div>
+                        <div class="content">
+                            <span class="ratings">
+                                <span class="rating-wrap">
+                                    <span class="star" style="width: 100%"></span>
+                                </span>
+                                <span class="rating-num">( 5 Review )</span>
+                            </span>
+                            <h5 class="title"><a href="single-product.html">Women's Elizabeth
+                                    Coat
+                                </a>
+                            </h5>
+                            <span class="price">
+                                <span class="new">$38.50</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-buttons">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Related product Area End -->
+
 @endsection
 @section('footer_js')
    <script>
-       $('.color_id').change(function(){
+       $('.color_id').click(function(){
+           //alert("hello world");
           var colorId=$(this).val();
           var productId=$(this).attr('data-product');
-          //alert(colorId);
+          alert(colorId);
           $.ajax({
               type:"GET",
               url:"{{ url('get/color/size') }}/"+colorId+'/'+productId,
               success:function(res)
               {
-                  //console.log(res);
+                  console.log(res);
                   if(res)
                   {
                       $('.sizeadd').html(res);
@@ -307,6 +615,6 @@
                   }
               }
           });
-       })
+       });
    </script>
 @endsection

@@ -45,4 +45,7 @@ class FrontendController extends Controller
         echo $output;
         //return response()->json($sizes);
     }
+    function Cart(){
+        return view('frontend.cart');
+    }
 }

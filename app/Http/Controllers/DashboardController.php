@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     function dashboard(){
-        return view('backend.dashboard');
+        
+        if(auth()->user()->roles->first()->name=='customer')
+        {
+            return view('backend.customerdashboard');
+        }
+        else{
+            return view('backend.dashboard');
+        }
+       
     }
 }

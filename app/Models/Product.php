@@ -24,6 +24,9 @@ class Product extends Model
     function category(){
         return $this->belongsTo(Category::class,'category_id');
     }
+    function cart(){
+        return $this->hasMany(Cart::class,'product_id');
+    }
     function color()
     {
         return $this->belongsTo(Color::class,'color_id'); 
@@ -31,5 +34,9 @@ class Product extends Model
     function attribute()
     {
         return $this->hasMany(Attributes::class,'product_id');
+    }
+    function gallery()
+    {
+        return $this->hasMany(Gallery::class,'product_id');
     }
 }

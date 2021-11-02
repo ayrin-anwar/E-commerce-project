@@ -169,13 +169,14 @@
                     </div> --}}
                
             
-              </div>
+              
               @endforeach
               <div class="clearfix mt-4">
                 <button type="button" id="add-button" class="btn btn-secondary float-left text-uppercase shadow-sm"><i class="fas fa-plus fa-fw"></i> Add</button>
                 <button type="button" id="remove-button" class="btn btn-secondary float-left text-uppercase ml-1"><i class="fas fa-minus fa-fw"></i> Remove</button>
                
               </div>
+            </div>
             </div>
                   {{-- <div class="form-group">
                     <label for="slug"> Slug </label>

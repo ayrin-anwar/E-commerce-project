@@ -74,7 +74,7 @@
                           @endforeach
                       </ul>
                       </td>
-                      <td><img src="{{asset('thumb/'.$product->thumbnail)}}"></td>
+                      <td><img src="{{asset('thumb/'.$product->created_at->format('Y/m/').$product->id.'/'.$product->thumbnail)}}"></td>
                       <td>{{$product->summary}}</td>
                       <td>{{$product->description}}</td>
                       <td>{{$product->created_at->format('d-M-Y h:i:s a')}}({{$product->created_at->diffForHumans()}})</td>

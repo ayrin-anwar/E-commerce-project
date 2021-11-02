@@ -8,6 +8,10 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +36,19 @@ use App\Http\Controllers\SizeController;
 Route::get('/dashboard', function () {
    return view('dashboard');
  })->middleware(['auth'])->name('dashboard');
+ Route::get('/dashboard', function () {
+  return view('customerdashboard');
+})->middleware(['auth'])->name('customerdashboard');
 
  require __DIR__.'/auth.php';
 Route::get('contact',[FrontendController::class,'contact']);
 Route::get('contact','FrontendController@contact');
 Route::get('/',[FrontendController::class,'frontend'])->name('frontend');
 Route::get('/productDetails/{slug}',[FrontendController::class,'productDetails'])->name('productDetails');
+Route::get('/carts',[CartController::class,'Cart'])->name('Cart');
+Route::get('/carts/{coupon_name}',[CartController::class,'Cart']);
+Route::post('/cartpost',[CartController::class,'CartPost'])->name('CartPost');
+
 Route::get('/get/color/size/{c_id}/{p_id}',[FrontendController::class,'GetColorSize'])->name('GetColorSize');
 Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
 Route::get('categories',[CategoryController::class,'categories'])->name('categories');
@@ -87,3 +98,23 @@ Route::get('colors',[ColorController::class,'colors'])->name('colors');
 Route::get('add-size',[SizeController::class,'addsize'])->name('addsize');
 Route::post('post-size',[SizeController::class,'postsize'])->name('postsize');
 Route::get('sizes',[SizeController::class,'sizes'])->name('sizes');
+
+Route::get('add-coupon',[CouponController::class,'addcoupon'])->name('addcoupon');
+Route::post('post-coupon',[CouponController::class,'postcoupon'])->name('postcoupon');
+Route::get('coupons',[CouponController::class,'coupons'])->name('coupons');
+Route::post('update-coupon',[CouponController::class,'updatecoupon'])->name('updatecoupon');
+Route::get('edit-coupon/{bilai}',[CouponController::class,'editcoupon'])->name('editcoupon');
+Route::get('delete-coupon/{bilai}',[CouponController::class,'deletecoupon'])->name('deletecoupon');
+Route::get('trashed-coupon',[CouponController::class,'trashcoupon'])->name('trashcoupon');
+Route::get('restore-coupon/{bilai}',[CouponController::class,'restorecoupon'])->name('restorecoupon');
+Route::get('permanentdelete-coupon/{bilai}',[CouponController::class,'permanentdeletecoupon'])->name('permanentdeletecoupon');
+Route::resource('role',RoleController::class);
+Route::get('assign/user',[RoleController::class,'assignuser'])->name('assign.user');
+Route::post('assign/user',[RoleController::class,'assignuserstore'])->name('assign.user.store');
+
+Route::get('add-user',[RoleController::class,'adduser'])->name('adduser');
+Route::post('post-user',[RoleController::class,'postuser'])->name('postuser');
+Route::get('checkout',[CheckoutController::class,'checkout'])->middleware(['auth'])->name('checkout');
+//Route::post('get/city/list',[CheckoutController::class,'getcitylist'])->name('getcitylist');
+Route::get('get/city/list/{country_id}',[CheckoutController::class,'getcitylist'])->name('getcitylist');
+Route::post('checkoutpost',[CheckoutController::class,'checkoutpost'])->name('checkoutpost');

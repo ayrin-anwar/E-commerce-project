@@ -54,13 +54,19 @@ class ProductController extends Controller
         $product->slug = $slug;
         $product->category_id=$request->category_id;
         $product->subcategory_id=$request->subcategory_id;
+        $product->thumbnail='default.png';
         $product->summary=$request->summary;
         $product->description=$request->description;
+        $product->save();
+        //return $product->created_at;
+        $path=public_path('thumb').'/'.$product->created_at->format('Y/m').'/'.$product->id.'/';
+       
+        File::makeDirectory($path,$mode=0777,true,true);
         if($request->hasFile('thumbnail'))
         {
             $image=$request->file('thumbnail');
             $ext=str::random(3).'-'.$slug.'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(50,50)->save(\public_path('thumb/' . $ext),50);
+            Image::make($image)->resize(50,50)->save($path. $ext,50);
             $product->thumbnail=$ext;
         }
         $product->save();
@@ -77,13 +83,14 @@ class ProductController extends Controller
             $attr->save();
 
         }
-        
+        $path1=public_path('gallery').'/'.$product->created_at->format('Y/m/').$product->id.'/';
+        File::makeDirectory($path1,$mode=0777,true,true);
         if($request->hasFile('image_name'))
         {
             $image1=$request->file('image_name');
             foreach($image1 as $key=>$value){
                 $ext1=str::random(3).'-'.$slug.'.'.$image1[$key]->getClientOriginalExtension();
-                Image::make($image1[$key])->resize(150,150)->save(public_path('gallery/'.$ext1),50);
+                Image::make($image1[$key])->resize(150,150)->save($path1.$ext1,50);
                 $gallery=new Gallery;
                 $gallery->image_name=$ext1;
                 $gallery->product_id=$product->id;
@@ -128,8 +135,13 @@ class ProductController extends Controller
         $product->slug = $slug;
         $product->category_id=$request->category_id;
         $product->subcategory_id=$request->subcategory_id;
+        $product->thumbnail='default.png';
         $product->summary=$request->summary;
         $product->description=$request->description;
+        $product->save();
+        $path=public_path('thumb').'/'.$product->created_at->format('Y/m').'/'.$product->id.'/';
+       
+        File::makeDirectory($path,$mode=0777,true,true);
         if($request->hasFile('thumbnail'))
         {
             $image=$request->file('thumbnail');
@@ -139,7 +151,7 @@ class ProductController extends Controller
                 unlink($old_img);
             }
             $ext=str::random(3).'-'.$slug.'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(50,50)->save(\public_path('thumb/' . $ext),50);
+            Image::make($image)->resize(50,50)->save($path. $ext,50);
             $product->thumbnail=$ext;
         }
         $product->save();
@@ -168,6 +180,21 @@ class ProductController extends Controller
             $attrs->sale_price=$request->sale_price[$key];
             $attrs->save();
            }
+         }
+         $path1=public_path('gallery').'/'.$product->created_at->format('Y/m/').$product->id.'/';
+         File::makeDirectory($path1,$mode=0777,true,true);
+         if($request->hasFile('image_name'))
+         {
+             $image1=$request->file('image_name');
+             foreach($image1 as $key=>$value){
+                 $ext1=str::random(3).'-'.$slug.'.'.$image1[$key]->getClientOriginalExtension();
+                 Image::make($image1[$key])->resize(150,150)->save($path1.$ext1,50);
+                 $gallery=new Gallery;
+                 $gallery->image_name=$ext1;
+                 $gallery->product_id=$product->id;
+                 $gallery->save();
+             }
+            
          }
         return back()->with('success',"Product updated successfully");
       

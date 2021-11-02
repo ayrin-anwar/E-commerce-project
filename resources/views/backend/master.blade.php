@@ -188,7 +188,7 @@
           <img src="{{asset('assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"></a>
         </div>
       </div>
 
@@ -493,27 +493,65 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Tables
+                Coupons
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              @can('coupon add')
+              <li class="nav-item">
+                <a href="{{ url('add-coupon') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Coupons</p>
+                </a>
+              </li>
+              @endcan
+             
+              <li class="nav-item">
+                <a href="{{ url('coupons') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Coupon</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('trashed-coupon') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Trashed Coupon</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+               Role Manager
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="{{ route('role.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
+                  <p>Add Roles</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{ route('role.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
+                  <p>View Roles</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="{{ url('add-user') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
+                  <p>Add User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('assign.user') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Assign User</p>
                 </a>
               </li>
             </ul>
